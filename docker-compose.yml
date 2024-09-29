@@ -1,0 +1,19 @@
+
+services:
+
+  postgres:
+    image: 'postgres:latest'
+    container_name: analyzer
+    environment:
+      - POSTGRES_DB=call_analyzer_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5449:5432"
+    restart: unless-stopped
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
