@@ -5,7 +5,6 @@ import edu.cmu.sphinx.api.SpeechResult;
 import edu.cmu.sphinx.api.StreamSpeechRecognizer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,7 +27,6 @@ public class SpeechRecognitionService {
         StringBuilder transcribedText = new StringBuilder();
         while ((result = recognizer.getResult()) != null) {
             String hypothesis = result.getHypothesis();
-            System.out.println("hypothesis = " + hypothesis);
             transcribedText.append(hypothesis).append(" ");
         }
         recognizer.stopRecognition();
@@ -42,8 +40,7 @@ public class SpeechRecognitionService {
         configuration.setDictionaryPath("resource:/edu/cmu/sphinx/models/en-us/cmudict-en-us.dict");
         configuration.setLanguageModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us.lm.bin");
 
-        configuration.setSampleRate(8000); //якщо ви хочете декодувати звук у телефонній якості з частотою дискретизації 8000 Гц
-
+       // configuration.setSampleRate(8000); //якщо ви хочете декодувати звук у телефонній якості з частотою дискретизації 8000 Гц
 
         return new StreamSpeechRecognizer(configuration);
     }

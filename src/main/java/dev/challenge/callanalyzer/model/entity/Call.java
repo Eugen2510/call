@@ -26,13 +26,13 @@ public class Call {
     private String text;
     @ManyToMany
     @JoinTable(
-            name = "call_category",  // Имя промежуточной таблицы
-            joinColumns = @JoinColumn(name = "call_id"),  // Колонка, связывающая с таблицей Student
-            inverseJoinColumns = @JoinColumn(name = "category_id")  // Колонка, связывающая с таблицей Course
+            name = "call_category",
+            joinColumns = @JoinColumn(name = "call_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
     )
     private Set<Category> categories = new HashSet<>();
 
-    public enum EmotionalTone{
+    public enum EmotionalTone {
         NEUTRAL,
         POSITIVE,
         NEGATIVE,

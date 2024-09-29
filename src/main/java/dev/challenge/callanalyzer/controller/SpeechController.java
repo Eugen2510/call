@@ -15,16 +15,8 @@ public class SpeechController {
     private final SpeechRecognitionService speechRecognitionService;
     @PostMapping("/speech")
     @ResponseStatus(HttpStatus.OK)
-//    @ResponseBody
     public String convertAudio(@RequestParam @Valid String path) throws Exception {
         return speechRecognitionService.transcribeAudioWithSphinx(path);
     }
 
-
-//    @PostMapping("/vosk")
-//    @ResponseStatus(HttpStatus.OK)
-////    @ResponseBody
-//    public String convertAudioVosk(@RequestParam @Valid String path) throws Exception {
-//        return voskSpeechRecognitionService.recognizeSpeechFromWav(path);
-//    }
 }
